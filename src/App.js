@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+
+function Youtube(props) {
+  const [subs, setSubs] = useState(props.subscribers);
+  const [state, setState] = useState({
+    count: 0,
+    description: "My description",
+  });
+
+  function onHandleClick() {
+    setState((prevState) => ({ ...prevState, count: prevState.count + 1 }));
+  }
+
+  const onSubmit = () => {
+    setSubs((subs) => subs + 1);
+  };
+
+  return (
+    <>
+      <h1>Hello , {props.name} </h1>
+      <button onClick={onSubmit}>Subscribers: {subs}</button>
+      <p>{props.children}</p>
+      <br />
+
+      <h3>{state.count}</h3>
+      <h6>
+        {state.description}- {state.count}{" "}
+      </h6>
+      <button onClick={onHandleClick}>Click to change State</button>
+    </>
+  );
+}
+
+function Child() {
+  return <>Child Component</>;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Youtube name="Joseph Mbote" subscribers={45}>
+        {" "}
+        Welcome to my youtube channel
+        <br />
+        <Child />
+      </Youtube>
     </div>
   );
 }
