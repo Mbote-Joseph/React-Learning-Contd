@@ -17,7 +17,7 @@ function Youtube(props) {
   };
 
   return (
-    <>
+    <div>
       <h1>Hello , {props.name} </h1>
       <button onClick={onSubmit}>Subscribers: {subs}</button>
       <p>{props.children}</p>
@@ -28,12 +28,12 @@ function Youtube(props) {
         {state.description}- {state.count}{" "}
       </h6>
       <button onClick={onHandleClick}>Click to change State</button>
-    </>
+    </div>
   );
 }
 
 function Child() {
-  return <>Child Component</>;
+  return <div>Child Component</div>;
 }
 
 function App() {
