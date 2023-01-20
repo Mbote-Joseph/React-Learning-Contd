@@ -36,6 +36,22 @@ function Child() {
   return <div>Child Component</div>;
 }
 
+function Card() {
+  const [count, setCount] = useState(0);
+
+  const handleCardClick = () => {
+    setCount((count) => count + 1);
+  };
+
+  return (
+    <Fragment>
+      <button onClick={handleCardClick}>Click </button>
+      <h1>My Card</h1>
+      <h4>{count}</h4>
+    </Fragment>
+  );
+}
+
 function App() {
   return (
     <div>
@@ -45,6 +61,9 @@ function App() {
         <br />
         <Child />
       </Youtube>
+      <br />
+      <br />
+      <Card />
     </div>
   );
 }
