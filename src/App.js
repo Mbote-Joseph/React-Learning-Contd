@@ -38,12 +38,14 @@ function Child() {
 
 function Card() {
   const [count, setCount] = useState(0);
+  // useRef()
   const inputEl = useRef(true);
 
   const handleCardClick = () => {
     setCount((count) => count + 1);
     // inputEl.focus();
     console.log(inputEl);
+    inputEl.current.focus();
   };
 
   return (
@@ -52,7 +54,7 @@ function Card() {
       <h1>My Card</h1>
       <h4>{count}</h4>
 
-      <input type="text" name={inputEl} />
+      <input type="text" ref={inputEl} />
     </Fragment>
   );
 }
