@@ -1,5 +1,5 @@
 import "./App.css";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useRef } from "react";
 
 function Youtube(props) {
   const [subs, setSubs] = useState(props.subscribers);
@@ -38,9 +38,12 @@ function Child() {
 
 function Card() {
   const [count, setCount] = useState(0);
+  const inputEl = useRef(true);
 
   const handleCardClick = () => {
     setCount((count) => count + 1);
+    // inputEl.focus();
+    console.log(inputEl);
   };
 
   return (
@@ -48,6 +51,8 @@ function Card() {
       <button onClick={handleCardClick}>Click </button>
       <h1>My Card</h1>
       <h4>{count}</h4>
+
+      <input type="text" name={inputEl} />
     </Fragment>
   );
 }
