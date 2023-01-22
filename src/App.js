@@ -1,5 +1,6 @@
 import "./App.css";
-import { Fragment, useState, useRef } from "react";
+import { Fragment, useState, useRef, React, Suspense } from "react";
+const Test = React.lazy(() => import("./Test"));
 
 function Youtube(props) {
   const [subs, setSubs] = useState(props.subscribers);
@@ -55,6 +56,10 @@ function Card() {
       <h4>{count}</h4>
 
       <input type="text" ref={inputEl} />
+      {/* Lazy Loading is mostly applicable with routing      */}
+      <Suspense fallback={<div>Loading ...</div>}>
+        <Test />
+      </Suspense>
     </Fragment>
   );
 }
